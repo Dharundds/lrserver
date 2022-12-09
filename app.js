@@ -1,3 +1,4 @@
+const functions = require('firebase-functions');
 const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -180,4 +181,4 @@ app.post(
 );
 
 app.listen(PORT, () => console.log(`listening in ${PORT}`));
-module.exports = app;
+exports.email = functions.https.onRequest(app);
