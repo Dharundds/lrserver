@@ -3,8 +3,6 @@ const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-
-const PORT = process.env.PORT || 8000;
 const app = express();
 var nodemailer = require("nodemailer");
 
@@ -180,5 +178,4 @@ app.post(
   }
 );
 
-app.listen(PORT, () => console.log(`listening in ${PORT}`));
 exports.email = functions.https.onRequest(app);
