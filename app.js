@@ -5,21 +5,21 @@ const fs = require('fs')
 const cors = require('cors')({origin: true});
 admin.initializeApp();
 
-// var sender = nodemailer.createTransport({
-//   service:"gmail",
-//   auth:{
-//     user:"dharundds@gmail.com",
-//     pass:"becjaziwymugppqv"
-//   }
-// })
-
 let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'dharundds@gmail.com',
-        pass: 'becjaziwymugppqv'
-    }
+  service: "gmail",
+  auth: {
+    user: "office@learningroomdigital.com",
+    pass: "nsminxxrfxrjlxpc",
+  },
 });
+
+// let transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'dharundds@gmail.com',
+//         pass: 'becjaziwymugppqv'
+//     }
+// });
 
 exports.contact = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
@@ -31,8 +31,8 @@ exports.contact = functions.https.onRequest((req, res) => {
         const message = body.message;
 
         const mailOptions = {
-            from:"dharundds@gmail.com",
-            to:["dharundds@gmail.com","hrithimj003@gmail.com"],
+            from:"office@learningroomdigital.com",
+            to:["office@learningroomdigital.com","vidishaagarwal@learningroomdigital.com"],
             subject: `Enquiry submitted from Learningroom website by ${fname}`,
             html:` 
               <style>
@@ -76,8 +76,10 @@ exports.application = functions.https.onRequest((req, res) => {
         fs.rename("uploads/" + file.filename, "uploads/" + fileName, () => {});
 
         const mailOptions = {
-            from:"dharundds@gmail.com",
-            to:["dharundds@gmail.com","hrithimj003@gmail.com"],
+            from: "office@learningroomdigital.com",
+            to: ["office@learningroomdigital.com","class1@learningroomdigital.com"],
+            // from:"dharundds@gmail.com",
+            // to:["dharundds@gmail.com","hrithimj003@gmail.com"],
             subject: `Enquiry submitted from Learningroom website by ${fname}`,
             text: `The application form of the student ${sname} of class ${sclass} is attached below`,
             attachments: [
@@ -136,9 +138,11 @@ exports.receipt = functions.https.onRequest((req, res) => {
         () => {}
         );
         const mailOptions = {
-            from:"dharundds@gmail.com",
-            to:["dharundds@gmail.com","hrithimj003@gmail.com"],
-            subject: `Enquiry submitted from Learningroom website by ${fname}`,
+            // from:"dharundds@gmail.com",
+            // to:["dharundds@gmail.com","hrithimj003@gmail.com"],
+            from: "office@learningroomdigital.com",
+            to: ["office@learningroomdigital.com","class1@learningroomdigital.com"],
+            subject: `Enquiry submitted from Learningroom website by ${sname}`,
             subject: `Receipt for ${sname}`,
             text: `The student ${sname} of class ${sclass} has paid the ${ino}${g} installation. The receipt is attached below`,
             attachments: [
