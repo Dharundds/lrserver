@@ -105,11 +105,15 @@ exports.receipt = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
       
         // getting dest email by query string
+        const body = JSON.parse(req.body)
         const file = req.file;
-        const sname = req.body.sname;
-        const sclass = req.body.sclass;
-        const ino = req.body.ino;
+        const sname = body.sname;
+        const sclass = body.sclass;
+        const ino = body.ino;
         let g;
+
+        console.log(file)
+        console.log(sname)
 
         if (ino==1){
         g='st'
