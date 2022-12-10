@@ -36,17 +36,14 @@ let uploadReceipt = multer({ dest: "uploadsReceipt/" });
 
 app.use(
   cors({
-    origin: ["https://learningroomdigital.com/form/","http://localhost:3000"],
-    //origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    optionsSuccessStatus: 200,
+    origin:true
   })
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.post("/learningroom/contact",(req,res)=>{
+app.post("/contact",(req,res)=>{
   const fname = req.body.fname;
   const email = req.body.email;
   const phonenum = req.body.phonenum;
@@ -115,12 +112,13 @@ app.post("/uploadFileAPI", upload.single("file"), (req, res, next) => {
       console.log("Email sent successfully: " + info.response);
       let file = "uploads/" + fileName;
       fs.unlinkSync(file);
+      return res.send("Done")
     }
   });
 });
 
 app.post(
-  "/uploadFileAPIReceipt",
+  "/receipt",
   uploadReceipt.single("file"),
   (req, res, next) => {
     const file = req.file;
@@ -172,6 +170,7 @@ app.post(
                      + info.response);
         let file = 'uploadsReceipt/'+fileName;
         fs.unlinkSync(file)
+        return res.send("Done")
       }
     });
    
