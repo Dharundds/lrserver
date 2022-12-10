@@ -13,7 +13,7 @@ var nodemailer = require("nodemailer");
 //     pass: "nsminxxrfxrjlxpc",
 //   },
 // });
-
+const PORT = process.env.PORT || 8000;
 let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
