@@ -93,7 +93,8 @@ exports.application = functions.https.onRequest((req, res) => {
             if(erro){
                 return res.send(erro.toString());
             }
-            return fs.unlinkSync("uploads/" + fileName);
+            fs.unlinkSync("uploads/" + fileName);
+            return res.send("done form")
         });
     });    
 });
@@ -149,7 +150,8 @@ exports.receipt = functions.https.onRequest((req, res) => {
             if(erro){
                 return res.send(erro.toString());
             }
-            return fs.unlinkSync('uploadsReceipt/'+fileName);
+            fs.unlinkSync('uploadsReceipt/'+fileName);
+            return res.send("done");
         });
     });    
 });
